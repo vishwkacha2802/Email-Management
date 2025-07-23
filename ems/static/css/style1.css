@@ -1,0 +1,200 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111827;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #1f2937;
+  position: relative;
+  text-align: center;
+}
+
+.logo {
+  position: absolute;
+  left: 30px;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.aurora-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #4adede, #c4fcef);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aurora 10s ease infinite;
+}
+
+@keyframes aurora {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Container */
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  flex-wrap: wrap;
+}
+
+/* Typing Animation */
+.typing-container {
+  flex: 1;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.typing-text {
+  font-size: 2.2rem;
+  font-weight: bold;
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #4adede, #c4fcef);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aurora 10s ease infinite;
+  white-space: pre-wrap;
+}
+
+/* Form Container */
+.form-container {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+/* Form Elements */
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 14px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #fff;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #e5e7eb;
+}
+
+.login-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-text a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin: 20px auto;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .aurora-title {
+    font-size: 1.8rem;
+  }
+
+  .logo {
+    position: static;
+    margin-right: 10px;
+  }
+
+  .main-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .typing-container {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .form-container {
+    margin-top: 10px;
+  }
+}

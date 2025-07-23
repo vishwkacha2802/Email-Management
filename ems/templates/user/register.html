@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register | Email Management System</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+ <!-- Header Section -->
+  <header class="main-header">
+    <div class="logo">
+      <img src="logo.png" alt="Logo" /> <!-- Replace logo.png with your logo -->
+    </div>
+    <div class="aurora-title">Email Management System</div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Left Typing Effect -->
+    <div class="typing-container">
+  <div class="typing-text" id="typing-text">Welcome to, Email Management System</div>
+</div>
+
+    <!-- Registration Form Center Right -->
+    <div id="form-container" class="form-container">
+    
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+ {% endif %}
+    
+
+
+      <form method="POST" action="{% url 'store' %}">
+        {% csrf_token %}
+        <h2>Register</h2>
+
+        <div class="input-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" required />
+        </div>
+
+        <div class="input-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" required />
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <div class="input-group">
+          <label for="confirm_password">Confirm Password</label>
+          <input type="password" id="confirm_password" name="confirm_password" required />
+        </div>
+
+        <button type="submit">Register</button>
+
+        <p class="login-text">
+          Already have an account?
+          <a href="login.html">Login now</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 All rights are received from <strong>Mr Mehta</strong>
+  </footer>
+
+  <!-- JS Password Validation -->
+<script>
+  // Multi-line typing animation vertically
+  const lines = [
+    "Hello! there",
+    "Welcome to,",
+    "Email Management System"
+  ];
+  const typingText = document.getElementById("typing-text");
+
+  let lineIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+  let deletingSpeed = 40;
+  let pauseBetweenLines = 1200;
+
+  function typeEffect() {
+    const currentLine = lines[lineIndex];
+    
+    if (!isDeleting) {
+      typingText.innerHTML = currentLine.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === currentLine.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, pauseBetweenLines);
+        return;
+      }
+    } else {
+      typingText.innerHTML = currentLine.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        isDeleting = false;
+        lineIndex = (lineIndex + 1) % lines.length;
+        setTimeout(typeEffect, 500);
+        return;
+      }
+    }
+
+    setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(typeEffect, 500);
+  });
+</script>
+
+</body>
+</html>
